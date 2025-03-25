@@ -5,14 +5,17 @@
 //  Created by Apple Coding machine on 3/26/25.
 //
 
-import SwiftUI
+import Foundation
 
-struct GreetingViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    GreetingViewModel()
+@Observable
+class GreetingViewModel {
+    var displayedLines: [String] = []
+    var currentIndex = 0
+    var fullText: String =
+ """
+    고민곰민하지마~~
+    고민곰민하지마~~
+    고민곰민하지마~~
+    고민곰민하지마~~
+ """
 }
