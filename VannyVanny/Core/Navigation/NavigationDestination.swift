@@ -9,5 +9,5 @@
 import Foundation
 
 enum NavigationDestination: Equatable, Hashable {
-    case test
+    case cheerView(concern: Concern)
 }

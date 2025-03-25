@@ -12,11 +12,9 @@ import SwiftData
 class Cheer {
     @Attribute(.unique) var id: UUID
     var message: String
-    var concern: Concern?
     
-    init(message: String, concern: Concern?) {
+    init(message: String) {
            self.id = UUID()
            self.message = message
-           self.concern = concern
        }
 }

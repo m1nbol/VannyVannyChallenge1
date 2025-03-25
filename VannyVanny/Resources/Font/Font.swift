@@ -32,7 +32,22 @@ extension Font {
         }
     }
     
+    enum Ownglyph {
+        case regular
+        
+        var value: String {
+            switch self {
+            case .regular:
+                return "Ownglyph_wiseelist-Rg"
+            }
+        }
+    }
+    
     static func pretend(type: Pretend, size: CGFloat) -> Font {
+        return .custom(type.value, size: size)
+    }
+    
+    static func ownglyph(type: Ownglyph, size: CGFloat) -> Font {
         return .custom(type.value, size: size)
     }
 }

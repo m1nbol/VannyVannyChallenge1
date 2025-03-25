@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct VannyVannyApp: App {
+    
+    @StateObject var container: DIContainer = .init()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environmentObject(container)
         }
     }
 }

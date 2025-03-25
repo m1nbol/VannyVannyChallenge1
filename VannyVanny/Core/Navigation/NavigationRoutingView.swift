@@ -10,11 +10,13 @@ import SwiftUI
 struct NavigationRoutingView: View {
     
     @State var destination: NavigationDestination
+    @EnvironmentObject var container: DIContainer
     
     var body: some View {
         switch destination {
-        case .test:
-            EmptyView()
+        case .cheerView(let concern):
+            CheerView(concern: concern)
+                .environmentObject(container)
         }
     }
 }

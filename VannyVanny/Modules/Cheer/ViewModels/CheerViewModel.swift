@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+@Observable
+class CheerViewModel {
+    var concern: Concern
+    
+    init(concern: Concern) {
+        self.concern = concern
+    }
+}

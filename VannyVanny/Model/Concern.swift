@@ -13,11 +13,12 @@ class Concern {
     @Attribute(.unique) var id: UUID
     var title: String
     var imageData: Data?
-    var cheers: [Cheer] = []
+    var cheers: [Cheer]
 
-    init(title: String, imageData: Data?) {
+    init(title: String, imageData: Data?, cheers: [Cheer] = []) {
         self.id = UUID()
         self.title = title
         self.imageData = imageData
+        self.cheers = cheers
     }
 }
