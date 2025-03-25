@@ -12,6 +12,7 @@ class WorryViewModel {
     var currentPage: Int = 0
 
     var inputText: [String] = []
+    let treeImage: [String] = ["treeGround", "treeSprout", "treeGrowing", "treeFull"]
     
     func currentPageUP() {
         if self.currentPage < 3 {
