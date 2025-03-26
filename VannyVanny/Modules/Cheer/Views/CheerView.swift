@@ -22,7 +22,7 @@ struct CheerView: View {
             
             CustomNavigation(action: {
                 container.navigationRouter.pop()
-            }, title: "고민나무", leftNaviIcon: .init(.leftArrow))
+            }, naviType: .concernTree)
             
             Spacer()
             
@@ -35,7 +35,7 @@ struct CheerView: View {
         .background {
             Image(.background)
         }
-        .safeAreaPadding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+        .safeAreaPadding(EdgeInsets(top: 0, leading: 16, bottom: 20, trailing: 16))
         .navigationBarBackButtonHidden()
     }
     

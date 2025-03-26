@@ -12,9 +12,11 @@ import SwiftData
 class Cheer {
     @Attribute(.unique) var id: UUID
     var message: String
+    var positionIndex: Int
     
-    init(message: String) {
-           self.id = UUID()
-           self.message = message
-       }
+    init(message: String, positionIndex: Int) {
+        self.id = UUID()
+        self.message = message
+        self.positionIndex = positionIndex
+    }
 }

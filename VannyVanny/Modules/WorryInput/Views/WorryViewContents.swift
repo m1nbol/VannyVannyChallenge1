@@ -12,7 +12,7 @@ struct WorryViewContents: View {
     
     @Bindable var viewModel: WorryViewModel
     @EnvironmentObject var appFlowviewModel: AppFlowViewModel
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var container: DIContainer
     
     var body: some View {
         switch viewModel.currentPage {
@@ -61,7 +61,7 @@ struct WorryViewContents: View {
                     if viewModel.startPoint == .onboardStart {
                         self.appFlowviewModel.appFlowState = .home
                     } else if viewModel.startPoint == .homeStart {
-                        dismiss()
+                        container.navigationRouter.pop()
                     }
                 }, label: {
                     Image(.close)
@@ -76,7 +76,6 @@ struct WorryViewContents: View {
             
             Spacer()
         })
-        .border(Color.red)
         .safeAreaPadding(.horizontal, 16)
         
     }

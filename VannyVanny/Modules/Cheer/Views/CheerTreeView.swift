@@ -59,11 +59,18 @@ struct CheerTreeView: View {
         }
         .sheet(isPresented: $viewModel.shwoSheet, content: {
             if let index = viewModel.selectePositionIndex,
-               viewModel.concern.cheers.indices.contains(index) {
-                let cheer = viewModel.concern.cheers[index]
-                CheerHarvest(text: cheer.message)
+               let cheer = viewModel.concern.cheers.first(where: { $0.positionIndex == index }) {
+                CheerHarvestView(text: cheer.message)
             } else {
-                Text("응원이 없습니다.")
+                AddCheerView { newText in
+                    if let index = viewModel.selectePositionIndex {
+                        let newCheer = Cheer(message: newText, positionIndex: index)
+                        viewModel.concern.cheers.append(newCheer)
+                        context.insert(newCheer)
+                        try? context.save()
+                        viewModel.shwoSheet = false
+                    }
+                }
             }
         })
     }
