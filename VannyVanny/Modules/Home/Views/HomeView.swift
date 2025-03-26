@@ -8,12 +8,12 @@
 import SwiftUI
 import SwiftData
 
-
 struct HomeView: View {
     
     var viewModel: HomeViewModel = .init()
     
-    @Query var concernData: [Concern]
+    var concernData: [Concern] = [.init(title: "국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이", imageData: nil), .init(title: "으아아아아아아아아", imageData: nil), .init(title: "asdasdasdasad", imageData: nil), .init(title: "xcxl;ksdjfpowejfp", imageData: nil), .init(title: "rwgergdfbf", imageData: nil), .init(title: "axlmlksklmlsmclksmlkamdlk", imageData: nil), .init(title: "dccxcv", imageData: nil), .init(title: "asklaknclnlcknvk", imageData: nil), .init(title: "czxccz", imageData: nil), .init(title: "qwealknlkxclkvnxclvklsckvnsld", imageData: nil), .init(title: "zxccafgeggwr", imageData: nil)]
+    @State var showFloating: Bool = false
     @Environment(\.modelContext) private var context
     @EnvironmentObject var container: DIContainer
     
@@ -31,6 +31,8 @@ struct HomeView: View {
                     })
                 })
                 .safeAreaPadding()
+                
+                FloatingButtonView(isShowFloating: $showFloating)
             })
             .background {
                 Image(.background)
@@ -40,6 +42,15 @@ struct HomeView: View {
                     .environmentObject(container)
             })
         })
+        .task {
+            UIFont.familyNames.sorted().forEach { familyName in
+                print("*** \(familyName) ***")
+                UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+                    print("\(fontName)")
+                }
+                print("---------------------")
+            }
+        }
     }
 }
 

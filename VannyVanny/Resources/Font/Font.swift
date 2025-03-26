@@ -43,6 +43,21 @@ extension Font {
         }
     }
     
+    enum YoonChildfundkoreaDaeHan {
+        case regular
+        
+        var value: String {
+            switch self {
+            case .regular:
+                return "YoonChildfundkoreaDaeHan"
+            }
+        }
+    }
+    
+    static func yoonChildfundkoreaDaeHan(type: YoonChildfundkoreaDaeHan, size: CGFloat) -> Font {
+        return .custom(type.value, size: size)
+    }
+    
     static func pretend(type: Pretend, size: CGFloat) -> Font {
         return .custom(type.value, size: size)
     }
