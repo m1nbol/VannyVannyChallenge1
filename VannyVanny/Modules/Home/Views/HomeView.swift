@@ -31,8 +31,9 @@ struct HomeView: View {
                     })
                 })
                 .safeAreaPadding()
-                
                 FloatingButtonView(isShowFloating: $showFloating)
+                
+                topTitle
             })
             .background {
                 Image(.background)
@@ -42,15 +43,17 @@ struct HomeView: View {
                     .environmentObject(container)
             })
         })
-        .task {
-            UIFont.familyNames.sorted().forEach { familyName in
-                print("*** \(familyName) ***")
-                UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
-                    print("\(fontName)")
-                }
-                print("---------------------")
-            }
-        }
+    }
+    
+    private var topTitle: some View {
+        ZStack(content: {
+            Image(.homeTitle)
+                .fixedSize()
+            
+            Text("고민 숲")
+                .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 36))
+                .foregroundStyle(Color.black)
+        })
     }
 }
 
