@@ -43,16 +43,23 @@ struct WorryViewContents: View {
             }
         )
         
-        return VStack(alignment: .leading, spacing: 40) {
+        return VStack(alignment: .center, spacing: 40) {
             Text(question.returnQuestion())
-                .font(.pretend(type: .medium, size: 20))
+                .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 20))
                 .foregroundStyle(Color.black)
                 .lineLimit(nil)
                 .lineSpacing(2.5)
+                .padding(.horizontal)
+                .frame(height: 120)
             
-            TextEditor(text: binding)
-                .customStyleEditor(text: binding, placeholder: "위 질문에 대해 고민을 자유롭게 털어놔주세요!", maxTextCount: 150, border: Color.gray, backColor: Color.white)
-                .frame(maxWidth: .infinity, maxHeight: 204)
+            ZStack {
+                Image(viewModel.treeImage[viewModel.currentPage])
+                //                    TextEditor(text: binding)
+            }
+            
+            //                TextEditor(text: binding)
+            //                    .customStyleEditor(text: binding, placeholder: "위 질문에 대해 고민을 자유롭게 털어놔주세요!", maxTextCount: 150, border: Color.gray, backColor: Color.white)
+            //                    .frame(maxWidth: .infinity, maxHeight: 204)
         }
     }
 }
@@ -66,13 +73,13 @@ enum Questions {
     func returnQuestion() -> String {
         switch self {
         case .first:
-            return "aslkdhaslsdlhasjkashjkdashjdhasdasjkdashdksahdkjashdkashdjakshdjkasdhjkasdhkasjhdaskjdhkasjdh"
+            return "요즘 신경 쓰이는 일이나 고민이 있다면,\n편하게 나에게 얘기해줄 수 있을까?"
         case .second:
-            return "aslkdhaslsdlhasjkashjkdashjdhasdasjkdashdksahdkjashdkashdjakshdjkasdhjkasdhkasjhdaskjdhkasjdh"
+            return "이 고민 때문에 어떤게 제일 힘들었고,\n어떤 감정이 들었어?"
         case .third:
-            return "aslkdhaslsdlhasjkashjkdashjdhasdasjkdashdksahdkjashdkashdjakshdjkasdhjkasdhkasjhdaskjdhkasjdh"
+            return "그렇구나, 앞으로는 어떻게 하고 싶어?"
         case .fourth:
-            return "aslkdhaslsdlhasjkashjkdashjdhasdasjkdashdksahdkjashdkashdjakshdjkasdhjkasdhkasjhdaskjdhkasjdh"
+            return "좋은 답변이야. 러너 얘기를 차근차근 들어보니,\n러너는 앞으로 잘 헤쳐나갈 수 있을거라는 확신이 들어!\n고민을 이야기해줘서 고마워!"
         }
     }
 }

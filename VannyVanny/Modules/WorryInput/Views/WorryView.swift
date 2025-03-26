@@ -16,29 +16,36 @@ struct WorryView: View {
     }
     
     var body: some View {
-        VStack(content: {
-            CustomNavigation(title: "\(viewModel.currentPage + 1) / 4", leftNaviIcon: Image(.leftChevron))
+        ZStack {
+            Image(.background)
+                .resizable()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .aspectRatio(contentMode: .fill)
             
-            Spacer().frame(height: 60)
-            
-            WorryViewContents(viewModel: viewModel)
-            
-            Spacer()
-            
-            HStack {
-                if viewModel.currentPage >= 1 {
-                    CustomMainButton(buttonStyle: .cancel, action: {
-                        viewModel.currentPageDown()
+            VStack(content: {
+                //            CustomNavigation(title: "\(viewModel.currentPage + 1) / 4", leftNaviIcon: Image(.leftChevron))
+                
+                //            Spacer().frame(height: 60)
+                
+                WorryViewContents(viewModel: viewModel)
+                
+                Spacer().frame(height: 40)
+                
+                HStack {
+                    if viewModel.currentPage >= 1 {
+                        CustomMainButton(buttonStyle: .cancel, action: {
+                            viewModel.currentPageDown()
+                        }, width: 180, height: 60)
+                    }
+                    
+                    CustomMainButton(buttonStyle: viewModel.currentPage < 3 ? .next : .ok, action: {
+                        viewModel.currentPageUP()
                     }, width: 180, height: 60)
+                    
                 }
-                
-                CustomMainButton(buttonStyle: viewModel.currentPage < 3 ? .next : .ok, action: {
-                    viewModel.currentPageUP()
-                }, width: 180, height: 60)
-                
-            }
-        })
-        .safeAreaPadding()
+            })
+            .safeAreaPadding()
+        }
     }
 }
 
