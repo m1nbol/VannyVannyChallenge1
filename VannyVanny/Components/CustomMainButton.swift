@@ -28,13 +28,10 @@ struct CustomMainButton: View {
             }
         }, label: {
             ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(buttonStyle.returnColor())
-                    .shadow(color: .black.opacity(0.15), radius: 5, x: 0, y: 0)
-                    .frame(minWidth: width, maxHeight: height)
+                Image(buttonStyle.returnBackground())
                 
                 Text(buttonStyle.returnText())
-                    .font(.pretend(type: .semibold, size: 23))
+                    .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 28))
                     .foregroundStyle(Color.black)
             }
         })
@@ -47,26 +44,30 @@ enum ButtonColor {
     case cancel
     case next
     case before
+    case plant
     
-    func returnColor() -> Color {
+    func returnBackground() -> String {
         switch self {
-        case .ok, .next:
-            return .main
+        case .ok, .next, .plant:
+            return "mainButton"
         case .cancel, .before:
-            return .cancel
+            return "subButton"
         }
     }
     
     func returnText() -> String {
         switch self {
         case .ok:
-            return "확인"
+            return "넘어가기"
         case .cancel:
-            return "취소"
+            return "취소하기"
         case .next:
-            return "다음"
+            return "다음으로"
         case .before:
-            return "이전"
+            return "이전으로"
+        case .plant:
+            return "고민 심기"
+        
         }
     }
 }
