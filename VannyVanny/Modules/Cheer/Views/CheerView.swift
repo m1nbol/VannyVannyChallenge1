@@ -22,7 +22,7 @@ struct CheerView: View {
             
             CustomNavigation(action: {
                 container.navigationRouter.pop()
-            }, title: "응원 쑥쑥", leftNaviIcon: Image(.leftChevron))
+            }, title: "고민나무", leftNaviIcon: .init(.leftArrow))
             
             Spacer()
             

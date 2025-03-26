@@ -58,8 +58,12 @@ struct CheerTreeView: View {
             }
         }
         .sheet(isPresented: $viewModel.shwoSheet, content: {
-            if let index = viewModel.selectePositionIndex {
-                Text("응원 작성 위치: \(index)")
+            if let index = viewModel.selectePositionIndex,
+               viewModel.concern.cheers.indices.contains(index) {
+                let cheer = viewModel.concern.cheers[index]
+                CheerHarvest(text: cheer.message)
+            } else {
+                Text("응원이 없습니다.")
             }
         })
     }

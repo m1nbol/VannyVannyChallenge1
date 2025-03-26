@@ -19,7 +19,7 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack(path: $container.navigationRouter.destination, root: {
-            ZStack(content: {
+            ZStack(alignment: .top, content: {
                 ScrollView(.vertical, content: {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 13), count: 2), spacing: 13, content: {
                         ForEach(concernData, id: \.id, content: { concern in
@@ -30,7 +30,7 @@ struct HomeView: View {
                         })
                     })
                 })
-                .safeAreaPadding()
+                .safeAreaPadding(EdgeInsets(top: 90, leading: 16, bottom: 16, trailing: 20))
                 FloatingButtonView(isShowFloating: $showFloating)
                 
                 topTitle

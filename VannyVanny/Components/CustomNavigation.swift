@@ -10,14 +10,14 @@ import SwiftUI
 struct CustomNavigation: View {
     
     let action: (() -> Void)?
-        let title: String
-        let leftNaviIcon: Image?
-        
-        init(action: (() -> Void)? = nil, title: String, leftNaviIcon: Image? = nil) {
-            self.action = action
-            self.title = title
-            self.leftNaviIcon = leftNaviIcon
-        }
+    let title: String
+    let leftNaviIcon: Image?
+    
+    init(action: (() -> Void)? = nil, title: String, leftNaviIcon: Image? = nil) {
+        self.action = action
+        self.title = title
+        self.leftNaviIcon = leftNaviIcon
+    }
     
     var body: some View {
         HStack(alignment: .center, content: {
