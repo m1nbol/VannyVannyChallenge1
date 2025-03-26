@@ -23,13 +23,11 @@ struct WorryView: View {
                 .aspectRatio(contentMode: .fill)
             
             VStack(content: {
-                //            CustomNavigation(title: "\(viewModel.currentPage + 1) / 4", leftNaviIcon: Image(.leftChevron))
-                
-                //            Spacer().frame(height: 60)
                 
                 WorryViewContents(viewModel: viewModel)
                 
                 Spacer().frame(height: 40)
+
                 
                 HStack {
                     if viewModel.currentPage >= 1 {
