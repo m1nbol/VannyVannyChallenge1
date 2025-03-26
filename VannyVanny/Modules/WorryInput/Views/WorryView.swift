@@ -11,16 +11,12 @@ struct WorryView: View {
     
     var viewModel: WorryViewModel
     
-    init() {
-        self.viewModel = .init()
+    init(startPoint: StartPoint) {
+        self.viewModel = .init(startPoint: startPoint)
     }
     
     var body: some View {
-        ZStack {
-            Image(.background)
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .aspectRatio(contentMode: .fill)
+        VStack(content: {
             
             VStack(content: {
                 
@@ -55,12 +51,26 @@ struct WorryView: View {
                         
                     }
                 }
-            })
-            .safeAreaPadding()
+                
+                CustomMainButton(buttonStyle: viewModel.currentPage < 3 ? .next : .ok, action: {
+                    viewModel.currentPageUP()
+                }, width: 180, height: 60)
+                
+            }
+        })
+        .background {
+            Image(.background)
         }
+        .safeAreaPadding(EdgeInsets(top: 0, leading: 16, bottom: 30, trailing: 16))
+        .border(Color.green)
     }
 }
 
 #Preview {
-    WorryView()
+    WorryView(startPoint: .homeStart)
+}
+
+enum StartPoint {
+    case onboardStart
+    case homeStart
 }

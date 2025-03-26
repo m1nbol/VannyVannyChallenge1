@@ -10,9 +10,13 @@ import Foundation
 @Observable
 class WorryViewModel {
     var currentPage: Int = 0
+    let startPoint: StartPoint
 
     var inputText: [String] = []
-    var treeImage: [String] = ["worrySeedOne", "worrySeedTwo", "worrySeedThree", "worryTree"]
+    
+    init(startPoint: StartPoint) {
+        self.startPoint = startPoint
+    }
     
     func currentPageUP() {
         if self.currentPage < 3 {

@@ -11,6 +11,8 @@ import Observation
 struct WorryViewContents: View {
     
     @Bindable var viewModel: WorryViewModel
+    @EnvironmentObject var appFlowviewModel: AppFlowViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         switch viewModel.currentPage {
@@ -21,7 +23,7 @@ struct WorryViewContents: View {
         case 2:
             makeView(question: .third)
         case 3:
-            makeView(question: .fourth)
+            finalViewVstack()
         default:
             EmptyView()
         }
@@ -43,24 +45,57 @@ struct WorryViewContents: View {
             }
         )
         
-        return VStack(alignment: .center, spacing: 40) {
-            Text(question.returnQuestion())
-                .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 20))
-                .foregroundStyle(Color.black)
-                .lineLimit(nil)
-                .lineSpacing(2.5)
-                .padding(.horizontal)
-                .frame(height: 120)
-            
-            ZStack {
-                Image(viewModel.treeImage[viewModel.currentPage])
-                //                    TextEditor(text: binding)
-            }
-            
-            //                TextEditor(text: binding)
-            //                    .customStyleEditor(text: binding, placeholder: "위 질문에 대해 고민을 자유롭게 털어놔주세요!", maxTextCount: 150, border: Color.gray, backColor: Color.white)
-            //                    .frame(maxWidth: .infinity, maxHeight: 204)
+        return VStack(alignment: .leading, spacing: 14) {
+            makeText(question: question, alignment: .leading)
+            makeTextEditor(binding: binding, question: question)
         }
+        .padding(.top, 20)
+    }
+    
+    private func finalViewVstack() -> some View {
+        VStack(content: {
+            HStack(content: {
+                Spacer()
+                
+                Button(action: {
+                    if viewModel.startPoint == .onboardStart {
+                        self.appFlowviewModel.appFlowState = .home
+                    } else if viewModel.startPoint == .homeStart {
+                        dismiss()
+                    }
+                }, label: {
+                    Image(.close)
+                })
+            })
+            
+            makeText(question: .fourth, alignment: .center)
+            
+            Spacer()
+            
+            Image(.worryFinal)
+            
+            Spacer()
+        })
+        .border(Color.red)
+        .safeAreaPadding(.horizontal, 16)
+        
+    }
+    
+    private func makeText(question: Questions, alignment: TextAlignment) -> some View {
+        Text(question.returnQuestion())
+            .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 20))
+            .foregroundStyle(Color.black)
+            .lineLimit(nil)
+            .lineSpacing(2.5)
+            .multilineTextAlignment(alignment)
+            .frame(alignment: .leading)
+    }
+    
+    private func makeTextEditor(binding: Binding<String>, question: Questions) -> some View {
+        TextEditor(text: binding)
+            .customStyleEditor(text: binding, placeholder: "답변을 입력해줘", maxTextCount: 200, question: question)
+            .frame(maxWidth: .infinity, maxHeight: 300)
+            .previewLayout(.sizeThatFits)
     }
 }
 
@@ -79,11 +114,24 @@ enum Questions {
         case .third:
             return "그렇구나, 앞으로는 어떻게 하고 싶어?"
         case .fourth:
-            return "좋은 답변이야. 러너 얘기를 차근차근 들어보니, 러너는 앞으로 잘 헤쳐나갈 수 있을거라는 확신이 들어! 고민을 이야기해줘서 고마워!"
+            return "좋은 답변이야. \n러너 얘기를 차근차근 들어보니, 러너는 앞으로 잘 헤쳐나갈 수 있을거라는 확신이 들어! \n고민을 이야기해줘서 고마워!"
+        }
+    }
+    
+    func returnImage() -> Image {
+        switch self {
+        case .first:
+            return .init(.worrySeedOne)
+        case .second:
+            return .init(.worrySeedTwo)
+        case .third:
+            return .init(.worrySeedThree)
+        case .fourth:
+            return .init(.worryFinal)
         }
     }
 }
 
 #Preview {
-    WorryViewContents(viewModel: .init())
+    WorryViewContents(viewModel: .init(startPoint: .homeStart))
 }
