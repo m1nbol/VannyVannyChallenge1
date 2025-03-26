@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 struct HomeView: View {
     
     var viewModel: HomeViewModel = .init()
+    
+    @Query var concernData: [Concern]
+    @Environment(\.modelContext) private var context
     @EnvironmentObject var container: DIContainer
     
     var body: some View {
@@ -18,14 +22,12 @@ struct HomeView: View {
             ZStack(content: {
                 ScrollView(.vertical, content: {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 13), count: 2), spacing: 13, content: {
-                        if let concernData = viewModel.concernData {
-                            ForEach(concernData, id: \.id, content: { concern in
-                                ConcernCard(concern: concern)
-                                    .onTapGesture {
-                                        container.navigationRouter.push(to: .cheerView(concern: concern))
-                                    }
-                            })
-                        }
+                        ForEach(concernData, id: \.id, content: { concern in
+                            ConcernCard(concern: concern)
+                                .onTapGesture {
+                                    container.navigationRouter.push(to: .cheerView(concern: concern))
+                                }
+                        })
                     })
                 })
                 .safeAreaPadding()

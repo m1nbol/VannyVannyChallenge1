@@ -19,27 +19,35 @@ struct CheerView: View {
     
     var body: some View {
         VStack(content: {
+            
+            CustomNavigation(action: {
+                container.navigationRouter.pop()
+            }, title: "응원 쑥쑥", leftNaviIcon: Image(.leftChevron))
+            
+            Spacer()
+            
             lineText
             
             Spacer()
+            
+            CheerTreeView(viewModel: viewModel)
         })
         .background {
             Image(.background)
         }
-        .safeAreaPadding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+        .safeAreaPadding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+        .navigationBarBackButtonHidden()
     }
     
     private var lineText: some View {
-        VStack(alignment: .leading, spacing: 10, content: {
+        VStack(alignment: .leading, spacing: 14, content: {
             ForEach(splitText(viewModel.concern.title, maxLineLength: 25), id: \.self) { inline in
                 Text(inline)
                     .font(.ownglyph(type: .regular, size: 20))
                     .multilineTextAlignment(.leading)
-                    .padding(.vertical, 3)
             }
         })
-        .padding(.top, 15)
-        .border(Color.red)
+        .padding(.top, 22)
     }
     
     private func splitText(_ text: String, maxLineLength: Int) -> [String] {

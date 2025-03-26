@@ -8,10 +8,11 @@
 import Foundation
 
 class AppFlowViewModel: ObservableObject {
-    @Published var appFlowState: AppFlow = .greeting
+    @Published var appFlowState: AppFlow = .home
     
     enum AppFlow {
         case greeting
         case inputWorry
+        case home
     }
 }

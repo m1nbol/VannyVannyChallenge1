@@ -24,16 +24,15 @@ struct ConcernCard: View {
     private var topIcon: some View {
         ZStack(alignment: .bottom, content: {
             concernImage
-                .border(Color.red)
             
             Text(concern.title)
                 .font(.pretend(type: .medium, size: 13))
                 .foregroundStyle(Color.white)
-                .border(Color.red)
                 .lineLimit(nil)
                 .lineSpacing(2.5)
                 .frame(maxWidth: .infinity, maxHeight: 55)
                 .padding(.horizontal, 20)
+                .padding(.bottom, 10)
         })
     }
     

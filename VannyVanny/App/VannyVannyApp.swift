@@ -21,9 +21,13 @@ struct VannyVannyApp: App {
                     GreetingView()
                 case .inputWorry:
                     Text("11")
+                case .home:
+                    HomeView()
                 }
             }
             .environmentObject(appFlowViewModel)
+            .environmentObject(container)
         }
+        .modelContainer(for: [Concern.self, Cheer.self])
     }
 }
