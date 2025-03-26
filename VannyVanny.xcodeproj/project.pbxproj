@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5C37342A2D93B8EC0010589E /* FloatingButton in Frameworks */ = {isa = PBXBuildFile; productRef = 5C3734292D93B8EC0010589E /* FloatingButton */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5CAA0C1F2D9286970003D79E /* VannyVanny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VannyVanny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C37342A2D93B8EC0010589E /* FloatingButton in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = VannyVanny;
 			packageProductDependencies = (
+				5C3734292D93B8EC0010589E /* FloatingButton */,
 			);
 			productName = VannyVanny;
 			productReference = 5CAA0C1F2D9286970003D79E /* VannyVanny.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 5CAA0C162D9286970003D79E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5C3734282D93B8EC0010589E /* XCRemoteSwiftPackageReference "FloatingButton" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5CAA0C202D9286970003D79E /* Products */;
 			projectDirPath = "";
@@ -339,6 +348,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C3734282D93B8EC0010589E /* XCRemoteSwiftPackageReference "FloatingButton" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/FloatingButton";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C3734292D93B8EC0010589E /* FloatingButton */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C3734282D93B8EC0010589E /* XCRemoteSwiftPackageReference "FloatingButton" */;
+			productName = FloatingButton;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5CAA0C172D9286970003D79E /* Project object */;
 }

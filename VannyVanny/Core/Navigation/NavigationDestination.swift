@@ -10,4 +10,6 @@ import Foundation
 
 enum NavigationDestination: Equatable, Hashable {
     case cheerView(concern: Concern)
+    case createWorry
+    case createCheer
 }

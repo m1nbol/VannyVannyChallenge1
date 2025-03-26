@@ -17,6 +17,10 @@ struct NavigationRoutingView: View {
         case .cheerView(let concern):
             CheerView(concern: concern)
                 .environmentObject(container)
+        case .createWorry:
+            Text("") //고민 생성 네비게이션
+        case .createCheer:
+            Text("") // 응원 생성 네비게이션
         }
     }
 }

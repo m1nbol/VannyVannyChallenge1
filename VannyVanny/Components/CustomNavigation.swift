@@ -42,7 +42,7 @@ struct CustomNavigation: View {
     @ViewBuilder
     private var naviTitle: some  View {
         Text(title)
-            .font(.pretend(type: .bold, size: 16))
+            .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 36))
             .foregroundStyle(Color.black)
     }
 }

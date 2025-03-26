@@ -16,7 +16,7 @@ struct ConcernCard: View {
     }
     
     var body: some View {
-        topIcon
+        topIcon   
     }
     
     // MARK: - Icon
@@ -26,7 +26,7 @@ struct ConcernCard: View {
             concernImage
             
             Text(concern.title)
-                .font(.pretend(type: .medium, size: 13))
+                .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 13))
                 .foregroundStyle(Color.white)
                 .lineLimit(nil)
                 .lineSpacing(2.5)
