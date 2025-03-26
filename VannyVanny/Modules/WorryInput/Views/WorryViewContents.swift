@@ -66,13 +66,13 @@ enum Questions {
     func returnQuestion() -> String {
         switch self {
         case .first:
-            return "aslkdhaslsdlhasjkashjkdashjdhasdasjkdashdksahdkjashdkashdjakshdjkasdhjkasdhkasjhdaskjdhkasjdh"
+            return "요즘 신경 쓰이는 일이나 고민이 있다면, 편하게 나에게 얘기해줄 수 있을까?"
         case .second:
-            return "aslkdhaslsdlhasjkashjkdashjdhasdasjkdashdksahdkjashdkashdjakshdjkasdhjkasdhkasjhdaskjdhkasjdh"
+            return "이 고민 때문에 어떤게 제일 힘들었고, 어떤 감정이 들었어?"
         case .third:
-            return "aslkdhaslsdlhasjkashjkdashjdhasdasjkdashdksahdkjashdkashdjakshdjkasdhjkasdhkasjhdaskjdhkasjdh"
+            return "그렇구나, 앞으로는 어떻게 하고 싶어?"
         case .fourth:
-            return "aslkdhaslsdlhasjkashjkdashjdhasdasjkdashdksahdkjashdkashdjakshdjkasdhjkasdhkasjhdaskjdhkasjdh"
+            return "좋은 답변이야. 러너 얘기를 차근차근 들어보니, 러너는 앞으로 잘 헤쳐나갈 수 있을거라는 확신이 들어! 고민을 이야기해줘서 고마워!"
         }
     }
 }
