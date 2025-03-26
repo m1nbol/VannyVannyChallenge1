@@ -12,6 +12,7 @@ class WorryViewModel {
     var currentPage: Int = 0
 
     var inputText: [String] = []
+    var treeImage: [String] = ["worrySeedOne", "worrySeedTwo", "worrySeedThree", "worryTree"]
     
     func currentPageUP() {
         if self.currentPage < 3 {

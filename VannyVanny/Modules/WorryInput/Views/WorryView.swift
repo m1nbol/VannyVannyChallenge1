@@ -17,16 +17,17 @@ struct WorryView: View {
     
     var body: some View {
         ZStack {
-            Image("background")
+            Image(.background)
+                .resizable()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .aspectRatio(contentMode: .fill)
             
             VStack(content: {
-                CustomNavigation(title: "\(viewModel.currentPage + 1) / 4", leftNaviIcon: Image(.leftChevron))
-                
-                Spacer().frame(height: 60)
                 
                 WorryViewContents(viewModel: viewModel)
                 
-                Spacer()
+                Spacer().frame(height: 40)
+
                 
                 HStack {
                     if viewModel.currentPage >= 1 {

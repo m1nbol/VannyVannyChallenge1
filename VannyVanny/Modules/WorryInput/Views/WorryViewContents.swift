@@ -43,16 +43,23 @@ struct WorryViewContents: View {
             }
         )
         
-        return VStack(alignment: .leading, spacing: 40) {
+        return VStack(alignment: .center, spacing: 40) {
             Text(question.returnQuestion())
-                .font(.pretend(type: .medium, size: 20))
+                .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 20))
                 .foregroundStyle(Color.black)
                 .lineLimit(nil)
                 .lineSpacing(2.5)
+                .padding(.horizontal)
+                .frame(height: 120)
             
-            TextEditor(text: binding)
-                .customStyleEditor(text: binding, placeholder: "위 질문에 대해 고민을 자유롭게 털어놔주세요!", maxTextCount: 150, border: Color.gray, backColor: Color.white)
-                .frame(maxWidth: .infinity, maxHeight: 204)
+            ZStack {
+                Image(viewModel.treeImage[viewModel.currentPage])
+                //                    TextEditor(text: binding)
+            }
+            
+            //                TextEditor(text: binding)
+            //                    .customStyleEditor(text: binding, placeholder: "위 질문에 대해 고민을 자유롭게 털어놔주세요!", maxTextCount: 150, border: Color.gray, backColor: Color.white)
+            //                    .frame(maxWidth: .infinity, maxHeight: 204)
         }
     }
 }
