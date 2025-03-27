@@ -130,7 +130,3 @@ enum Questions {
         }
     }
 }
-
-#Preview {
-    WorryViewContents(viewModel: .init(startPoint: .homeStart))
-}
