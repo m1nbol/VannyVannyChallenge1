@@ -18,15 +18,27 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    match(type: "appstore")                     # ✅ ① 인증서/프로파일 가져오기
+
+    get_certificates
+    get_provisioning_profile
 
     increment_build_number(xcodeproj: "VannyVanny.xcodeproj")
 
     build_app(                                  # ✅ ② 빌드
       scheme: "VannyVanny",
-      export_method: "app-store"
+      export_method: "app-store",
+      export_options: {
+          provisioningProfiles: { 
+# ✅ apple developer 에서 provisioning profile 의 이름을 입력해주어야 한다.
+              "com.appleAcademy.VannyVanny" => "match AppStore com.appleAcademy.VannyVanny"
+          }
+      }
     )
 
-    upload_to_testflight                        # ✅ ③ TestFlight 업로드
+    upload_to_testflight(
+      # ✅ api_key_path 를 지정해주는 대신 api_key 를 만들어서 작성할 수 있다.
+          #  api_key: api_key,
+          api_key_path: "fastlane/key.json"
+          )
   end
 end
