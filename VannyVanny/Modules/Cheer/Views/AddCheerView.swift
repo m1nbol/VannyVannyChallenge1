@@ -10,6 +10,7 @@ import SwiftUI
 struct AddCheerView: View {
     
     @Environment(\.dismiss) var dismiss
+    @Binding var showAddCheerView: Bool
     @State private var text = ""
     
     var onSubmit: (String) -> Void
@@ -27,6 +28,7 @@ struct AddCheerView: View {
                 }, naviType: .cheerApple, rightAction: {
                     if !text.trimmingCharacters(in: .whitespaces).isEmpty {
                         onSubmit(text)
+                        showAddCheerView = false
                     }
                 })
                 .safeAreaPadding(.horizontal, 16)

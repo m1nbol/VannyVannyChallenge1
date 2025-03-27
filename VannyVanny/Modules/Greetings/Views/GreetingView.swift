@@ -40,7 +40,7 @@ struct GreetingView: View {
             })
         }
         .task {
-            if let url = Bundle.main.url(forResource: "gom", withExtension: "mov") {
+            if let url = Bundle.main.url(forResource: "gom", withExtension: "mp4") {
                 player = AVPlayer(url: url)
             } else {
                 print("영상 파일 찾을 수 없습니다.")
@@ -49,19 +49,19 @@ struct GreetingView: View {
     }
     
     private var greetingText: some View {
-        VStack(alignment: .leading, spacing: 10, content: {
+        VStack(alignment: .leading, spacing: 5, content: {
             ForEach(viewModel.displayedLines.indices, id: \.self) { index in
                 let line = viewModel.displayedLines[index]
                 Text(line)
-                    .font(.pretend(type: .regular, size: 16))
+                    .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 18))
                     .foregroundStyle(Color.black)
                     .lineLimit(nil)
-                    .lineSpacing(2.5)
                     .multilineTextAlignment(.leading)
             }
         })
         .frame(maxWidth: .infinity, minHeight: 200, alignment: .topLeading)
-        .padding()
+        .padding(.top, 5)
+        .padding(.leading, 1)
         .task {
             startDialogue()
         }

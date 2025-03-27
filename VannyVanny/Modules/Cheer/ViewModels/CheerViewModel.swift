@@ -34,5 +34,5 @@ class CheerViewModel {
         CGPoint(x: 0.35, y: 0.55),
         CGPoint(x: 0.55, y: 0.5),
         CGPoint(x: 0.65, y: 0.6)
-    ].shuffled()
+    ]
 }

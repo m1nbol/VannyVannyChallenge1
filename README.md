@@ -47,7 +47,29 @@ For building and running the application you need:
 </div>
 
 ## 화면 구성 📱
-(나중에 추가)
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/7b7f4fb3-06f7-4088-a092-cf58393d615f" width="200">
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/7399cfd2-311a-499a-b689-f957ecffaf9e" width="200">
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/356a2343-ef75-4f90-ad78-f72912d2b1c5" width="200">
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/465106e2-9c01-40a3-947d-1abc29da57d3" width="200">
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/ffcc9f06-5e5e-4658-a053-b5a47deb251e" width="200">
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/899450cd-0c3b-4956-ad42-8a5eb2695f18" width="200">
+    </td>
+  </tr>
+</table>
+
 
 ## 아키텍처 및 프로젝트 구조
 ```
@@ -59,11 +81,31 @@ For building and running the application you need:
  ┃ ┣ 📂AccentColor.colorset
  ┃ ┃ ┗ 📜Contents.json
  ┃ ┣ 📂AppIcon.appiconset
+ ┃ ┃ ┣ 📜1024.png
+ ┃ ┃ ┣ 📜114.png
+ ┃ ┃ ┣ 📜120.png
+ ┃ ┃ ┣ 📜180.png
+ ┃ ┃ ┣ 📜29.png
+ ┃ ┃ ┣ 📜40.png
+ ┃ ┃ ┣ 📜57.png
+ ┃ ┃ ┣ 📜58.png
+ ┃ ┃ ┣ 📜60.png
+ ┃ ┃ ┣ 📜80.png
+ ┃ ┃ ┣ 📜87.png
  ┃ ┃ ┗ 📜Contents.json
  ┃ ┣ 📂Cheer
  ┃ ┃ ┣ 📂apple.imageset
  ┃ ┃ ┃ ┣ 📜Contents.json
  ┃ ┃ ┃ ┗ 📜apple.pdf
+ ┃ ┃ ┣ 📂cheerApple.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜cheerApple.pdf
+ ┃ ┃ ┣ 📂cheerBtn.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜cheerBtn.png
+ ┃ ┃ ┣ 📂cheerLogo.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜cheerLogo.pdf
  ┃ ┃ ┣ 📂cheerTree.imageset
  ┃ ┃ ┃ ┣ 📜Contents.json
  ┃ ┃ ┃ ┗ 📜cheerTree.pdf
@@ -72,11 +114,26 @@ For building and running the application you need:
  ┃ ┃ ┃ ┗ 📜unCheer.pdf
  ┃ ┃ ┗ 📜Contents.json
  ┃ ┣ 📂Components
+ ┃ ┃ ┣ 📂leftArrow.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜leftArrow.pdf
  ┃ ┃ ┣ 📂leftChevron.imageset
  ┃ ┃ ┃ ┣ 📜Contents.json
  ┃ ┃ ┃ ┗ 📜leftChevron.pdf
+ ┃ ┃ ┣ 📂mainButton.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜mainButton.pdf
+ ┃ ┃ ┣ 📂subButton.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜subButton.pdf
  ┃ ┃ ┗ 📜Contents.json
  ┃ ┣ 📂Concern
+ ┃ ┃ ┣ 📂addConcern.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜addConcern.pdf
+ ┃ ┃ ┣ 📂homeTitle.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜homeTitle.pdf
  ┃ ┃ ┣ 📂treeOne.imageset
  ┃ ┃ ┃ ┣ 📜Contents.json
  ┃ ┃ ┃ ┗ 📜treeOne.pdf
@@ -92,9 +149,27 @@ For building and running the application you need:
  ┃ ┃ ┃ ┣ 📜Contents.json
  ┃ ┃ ┃ ┗ 📜onboardingBear.pdf
  ┃ ┃ ┗ 📜Contents.json
+ ┃ ┣ 📂Worry
+ ┃ ┃ ┣ 📂worryFinal.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜worryFinal.pdf
+ ┃ ┃ ┣ 📂worrySeedOne.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜worrySeedOne.pdf
+ ┃ ┃ ┣ 📂worrySeedThree.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜worrySeedThree.pdf
+ ┃ ┃ ┣ 📂worrySeedTwo.imageset
+ ┃ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┃ ┗ 📜worrySeedTwo.pdf
+ ┃ ┃ ┗ 📜Contents.json
  ┃ ┣ 📂background.imageset
  ┃ ┃ ┣ 📜Contents.json
  ┃ ┃ ┗ 📜background.pdf
+ ┃ ┣ 📂close.imageset
+ ┃ ┃ ┣ 📜Contents.json
+ ┃ ┃ ┗ 📜close.pdf
+ ┃ ┣ 📜.DS_Store
  ┃ ┗ 📜Contents.json
  ┣ 📂Components
  ┃ ┣ 📜CustomMainButton.swift
@@ -116,6 +191,8 @@ For building and running the application you need:
  ┃ ┃ ┣ 📂ViewModels
  ┃ ┃ ┃ ┗ 📜CheerViewModel.swift
  ┃ ┃ ┗ 📂Views
+ ┃ ┃ ┃ ┣ 📜AddCheerView.swift
+ ┃ ┃ ┃ ┣ 📜CheerHarvestView.swift
  ┃ ┃ ┃ ┣ 📜CheerTreeView.swift
  ┃ ┃ ┃ ┗ 📜CheerView.swift
  ┃ ┣ 📂Greetings
@@ -127,6 +204,7 @@ For building and running the application you need:
  ┃ ┃ ┣ 📂ViewModels
  ┃ ┃ ┃ ┗ 📜HomeViewModel.swift
  ┃ ┃ ┗ 📂Views
+ ┃ ┃ ┃ ┣ 📜AddConcernButton.swift
  ┃ ┃ ┃ ┣ 📜ConcernCard.swift
  ┃ ┃ ┃ ┗ 📜HomeView.swift
  ┃ ┗ 📂WorryInput
@@ -145,10 +223,20 @@ For building and running the application you need:
  ┃ ┃ ┃ ┃ ┗ 📜Contents.json
  ┃ ┃ ┃ ┣ 📂gray02.colorset
  ┃ ┃ ┃ ┃ ┗ 📜Contents.json
+ ┃ ┃ ┃ ┣ 📂gray03.colorset
+ ┃ ┃ ┃ ┃ ┗ 📜Contents.json
+ ┃ ┃ ┃ ┣ 📂gray04.colorset
+ ┃ ┃ ┃ ┃ ┗ 📜Contents.json
  ┃ ┃ ┃ ┗ 📜Contents.json
  ┃ ┃ ┣ 📂cancel.colorset
  ┃ ┃ ┃ ┗ 📜Contents.json
+ ┃ ┃ ┣ 📂floating.colorset
+ ┃ ┃ ┃ ┗ 📜Contents.json
  ┃ ┃ ┣ 📂mainColor.colorset
+ ┃ ┃ ┃ ┗ 📜Contents.json
+ ┃ ┃ ┣ 📂overCircle.colorset
+ ┃ ┃ ┃ ┗ 📜Contents.json
+ ┃ ┃ ┣ 📂textBlack.colorset
  ┃ ┃ ┃ ┗ 📜Contents.json
  ┃ ┃ ┗ 📜Contents.json
  ┃ ┣ 📂Font
@@ -158,9 +246,11 @@ For building and running the application you need:
  ┃ ┃ ┣ 📜Pretendard-Light.otf
  ┃ ┃ ┣ 📜Pretendard-Medium.otf
  ┃ ┃ ┣ 📜Pretendard-Regular.otf
- ┃ ┃ ┗ 📜Pretendard-SemiBold.otf
- ┃ ┗ 📂Keyboard
+ ┃ ┃ ┣ 📜Pretendard-SemiBold.otf
+ ┃ ┃ ┗ 📜YoonChildfundkoreaDaeHan.otf
+ ┃ ┣ 📂Keyboard
  ┃ ┃ ┗ 📜HideKeyboard.swift
+ ┃ ┗ 📜gom.mp4
  ┣ 📜.DS_Store
  ┗ 📜Info.plist
 ```

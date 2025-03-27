@@ -34,7 +34,9 @@ struct CheerTreeView: View {
                         let cheer = viewModel.concern.cheers[cheerIndex]
                         
                         Button(action: {
+                            print(cheer.message)
                             viewModel.newCheerText = cheer.message
+                            viewModel.shwoSheet = true
                         }, label: {
                             Image(.apple)
                                 .resizable()
@@ -66,13 +68,10 @@ struct CheerTreeView: View {
             }
         }
         .sheet(isPresented: $viewModel.shwoSheet, content: {
-            if let index = viewModel.selectePositionIndex,
-               let cheer = viewModel.concern.cheers.first(where: { $0.positionIndex == index }) {
-                CheerHarvestView(text: cheer.message)
-            }
+                CheerHarvestView(text: viewModel.newCheerText)
         })
         .fullScreenCover(isPresented: $viewModel.showAddCheerView) {
-            AddCheerView { newText in
+            AddCheerView(showAddCheerView: $viewModel.showAddCheerView) { newText in
                 if let index = viewModel.selectePositionIndex {
                     let newCheer = Cheer(message: newText, positionIndex: index)
                     viewModel.concern.cheers.append(newCheer)
