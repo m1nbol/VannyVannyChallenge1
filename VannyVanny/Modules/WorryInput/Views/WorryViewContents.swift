@@ -41,6 +41,8 @@ struct WorryViewContents: View {
             set: { newValue in
                 if viewModel.inputText.indices.contains(viewModel.currentPage) {
                     viewModel.inputText[viewModel.currentPage] = newValue
+                } else if viewModel.inputText.count == viewModel.currentPage {
+                    viewModel.inputText.append(newValue)
                 }
             }
         )

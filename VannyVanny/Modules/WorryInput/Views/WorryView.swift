@@ -73,11 +73,14 @@ struct WorryView: View {
         }
         .safeAreaPadding(EdgeInsets(top: 0, leading: 16, bottom: 30, trailing: 16))
         .navigationBarBackButtonHidden()
+        .task {
+            UIApplication.shared.hideKeyboard()
+        }
     }
 }
 
 #Preview {
-    WorryView(startPoint: .homeStart)
+    WorryView(startPoint: .onboardStart)
         .environmentObject(DIContainer())
         .environmentObject(AppFlowViewModel())
 }

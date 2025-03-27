@@ -13,18 +13,20 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+default_platform(:ios)
+
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    match(type: "appstore", readonly: true)  # ← 이 줄만 바꿔도 해결 가능
+    match(type: "appstore")                     # ✅ ① 인증서/프로파일 가져오기
 
     increment_build_number(xcodeproj: "VannyVanny.xcodeproj")
 
-    build_app(
+    build_app(                                  # ✅ ② 빌드
       scheme: "VannyVanny",
       export_method: "app-store"
     )
 
-    upload_to_testflight
+    upload_to_testflight                        # ✅ ③ TestFlight 업로드
   end
 end

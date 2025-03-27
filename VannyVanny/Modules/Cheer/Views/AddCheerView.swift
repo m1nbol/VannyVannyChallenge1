@@ -34,6 +34,9 @@ struct AddCheerView: View {
                 middleContents
             }
         })
+        .task {
+            UIApplication.shared.hideKeyboard()
+        }
     }
     
     private var middleContents: some View {

@@ -15,6 +15,7 @@ struct CheerTreeView: View {
     
     @State private var showingCheer: Bool = false
     @Environment(\.modelContext) private var context
+    @EnvironmentObject var container: DIContainer
     
     var body: some View {
         GeometryReader { geo in
@@ -36,13 +37,20 @@ struct CheerTreeView: View {
                             viewModel.newCheerText = cheer.message
                         }, label: {
                             Image(.apple)
-                                .fixedSize()
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 55, height: 55)
                         })
                         .position(x: x, y: y)
                     } else {
                         Button(action: {
-                            viewModel.shwoSheet.toggle()
                             viewModel.selectePositionIndex = index
+                            if let index = viewModel.selectePositionIndex,
+                               viewModel.concern.cheers.contains(where:  { $0.positionIndex == index }) {
+                                viewModel.shwoSheet = true
+                            } else {
+                                viewModel.showAddCheerView = true
+                            }
                         }, label: {
                             Image(.unCheer)
                                 .fixedSize()
@@ -61,17 +69,18 @@ struct CheerTreeView: View {
             if let index = viewModel.selectePositionIndex,
                let cheer = viewModel.concern.cheers.first(where: { $0.positionIndex == index }) {
                 CheerHarvestView(text: cheer.message)
-            } else {
-                AddCheerView { newText in
-                    if let index = viewModel.selectePositionIndex {
-                        let newCheer = Cheer(message: newText, positionIndex: index)
-                        viewModel.concern.cheers.append(newCheer)
-                        context.insert(newCheer)
-                        try? context.save()
-                        viewModel.shwoSheet = false
-                    }
-                }
             }
         })
+        .fullScreenCover(isPresented: $viewModel.showAddCheerView) {
+            AddCheerView { newText in
+                if let index = viewModel.selectePositionIndex {
+                    let newCheer = Cheer(message: newText, positionIndex: index)
+                    viewModel.concern.cheers.append(newCheer)
+                    context.insert(newCheer)
+                    try? context.save()
+                    viewModel.showAddCheerView = false
+                }
+            }
+        }
     }
 }

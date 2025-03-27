@@ -46,7 +46,7 @@ struct CustomTextEditor: ViewModifier {
             .textInputAutocapitalization(.none)
             .background(Color.clear)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 14))
+            .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 20))
             .scrollContentBackground(.hidden)
             .overlay(alignment: .bottomTrailing, content: {
                 if showQuestionImage {

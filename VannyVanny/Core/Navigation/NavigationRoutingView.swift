@@ -14,6 +14,7 @@ struct NavigationRoutingView: View {
     @EnvironmentObject var container: DIContainer
     @EnvironmentObject var appFlowViewModel: AppFlowViewModel
     
+    
     var body: some View {
         switch destination {
         case .cheerView(let concern):
@@ -23,8 +24,6 @@ struct NavigationRoutingView: View {
             WorryView(startPoint: .homeStart)
                 .environmentObject(container)
                 .environmentObject(appFlowViewModel)
-        case .createCheer:
-            Text("") // 응원 생성 네비게이션
         }
     }
 }
