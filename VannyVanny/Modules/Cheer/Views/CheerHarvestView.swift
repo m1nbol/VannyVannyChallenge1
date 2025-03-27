@@ -49,6 +49,7 @@ struct CheerHarvestView: View {
                 .foregroundStyle(Color.black)
                 .padding(.top, 30)
         })
+        .padding(.top, 25)
     }
 }
 
