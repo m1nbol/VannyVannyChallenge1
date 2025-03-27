@@ -50,3 +50,7 @@ xcuserdata/
 
 # 🔐 App Store Connect API 키 파일
 fastlane/AuthKey_*.p8
+*.cer
+*.p12
+*.mobileprovision
+*.ipa

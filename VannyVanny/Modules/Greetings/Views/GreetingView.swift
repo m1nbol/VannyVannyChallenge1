@@ -6,24 +6,45 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct GreetingView: View {
     
     @EnvironmentObject var appFlowViewModel: AppFlowViewModel
+    @State var player: AVPlayer?
+    
     var viewModel: GreetingViewModel = .init()
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom, content: {
-                Image(.onboardingBear)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: geo.size.width, height: geo.size.height)
-                    .ignoresSafeArea(.all)
+                if let player = player {
+                    VideoPlayer(player: player)
+                        .ignoresSafeArea()
+                        .task {
+                            player.play()
+                            player.actionAtItemEnd = .none
+                            NotificationCenter.default.addObserver(
+                                forName: .AVPlayerItemDidPlayToEndTime,
+                                object: player.currentItem,
+                                queue: .main
+                            ) { _ in
+                                player.seek(to: .zero)
+                                player.play()
+                            }
+                        }
+                }
                 
                 greetingText
                     .safeAreaPadding()
             })
+        }
+        .task {
+            if let url = Bundle.main.url(forResource: "gom", withExtension: "mov") {
+                player = AVPlayer(url: url)
+            } else {
+                print("영상 파일 찾을 수 없습니다.")
+            }
         }
     }
     
@@ -41,11 +62,6 @@ struct GreetingView: View {
         })
         .frame(maxWidth: .infinity, minHeight: 200, alignment: .topLeading)
         .padding()
-        .background {
-            RoundedRectangle(cornerRadius: 18)
-                .fill(Color.white)
-                .stroke(Color.gray01, style: .init(lineWidth: 1))
-        }
         .task {
             startDialogue()
         }
