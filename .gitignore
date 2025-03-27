@@ -48,4 +48,5 @@ xcuserdata/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-key.json
+# 🔐 App Store Connect API 키 파일
+fastlane/AuthKey_*.p8
