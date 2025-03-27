@@ -1,0 +1,44 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+
+    get_certificates
+    get_provisioning_profile
+
+    increment_build_number(xcodeproj: "VannyVanny.xcodeproj")
+
+    build_app(                                 
+      scheme: "VannyVanny",
+      export_method: "app-store",
+      export_options: {
+          provisioningProfiles: { 
+              "com.appleAcademy.VannyVanny" => "match AppStore com.appleAcademy.VannyVanny"
+          }
+      }
+    )
+    upload_to_testflight(
+      api_key: app_store_connect_api_key(
+          key_id: "5L5TVTG442",
+          issuer_id: "bb315e3a-b070-42ce-b27c-25acc13f0469",
+          key_filepath: "./fastlane/AuthKey_5L5TVTG442.p8"
+  )
+)
+  end
+end

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 @Observable
 class WorryViewModel {
@@ -28,5 +29,17 @@ class WorryViewModel {
         if self.currentPage > 0 {
             currentPage -= 1
         }
+    }
+    
+    func createFirstWorry() -> Concern {
+        let title = inputText.indices.contains(0) ? inputText[0] : ""
+        let treeImages = ["treeOne", "treeTwo", "treeThree"]
+        
+        let randomImage = treeImages.randomElement()!
+        
+        let image = UIImage(named: randomImage)
+        let imageData = image?.jpegData(compressionQuality: 0.9)
+        
+        return Concern(title: title, imageData: imageData, cheers: [])
     }
 }

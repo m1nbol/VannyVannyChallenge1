@@ -17,6 +17,7 @@ class CheerViewModel {
     
     var selectePositionIndex: Int? = nil
     var shwoSheet: Bool = false
+    var showAddCheerView: Bool = false
     
     init(concern: Concern) {
         self.concern = concern

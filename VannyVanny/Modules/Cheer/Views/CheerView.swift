@@ -22,7 +22,7 @@ struct CheerView: View {
             
             CustomNavigation(action: {
                 container.navigationRouter.pop()
-            }, title: "고민나무", leftNaviIcon: .init(.leftArrow))
+            }, naviType: .concernTree)
             
             Spacer()
             
@@ -35,7 +35,7 @@ struct CheerView: View {
         .background {
             Image(.background)
         }
-        .safeAreaPadding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+        .safeAreaPadding(EdgeInsets(top: 0, leading: 16, bottom: 20, trailing: 16))
         .navigationBarBackButtonHidden()
     }
     
@@ -68,8 +68,4 @@ struct CheerView: View {
         
         return line
     }
-}
-
-#Preview {
-    CheerView(concern: .init(title: "국회의원이 회기전에 체포 또는 구금된 떄에는 현행범인이 아닌 한 국회의 요구가 있으면 회기 중 석방다. 모든 국민은 법률이 정하는 바에 의하여 국방의 의무를 진다", imageData: nil))
 }

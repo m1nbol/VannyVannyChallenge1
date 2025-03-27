@@ -13,63 +13,86 @@ struct CustomTextEditor: ViewModifier {
     let placeholder: String
     let maxTextCount: Int
     let question: Questions
+    let showQuestionImage: Bool
     
     init(
         text: Binding<String>,
         placeholder: String,
         maxtextCount: Int,
-        question: Questions
+        question: Questions,
+        showQuestionImage: Bool = true
     ) {
         self._text = text
         self.placeholder = placeholder
         self.maxTextCount = maxtextCount
         self.question = question
+        self.showQuestionImage = showQuestionImage
     }
     
     func body(content: Content) -> some View {
         content
-            .padding(.vertical, 20)
+            .padding(.vertical, showQuestionImage ? 20 : 10)
             .padding(.horizontal, 17)
-            .background(alignment: .topLeading, content: {
+            .background(alignment: showQuestionImage ? .topLeading : .center, content: {
                 if text.isEmpty {
                     Text(placeholder)
                         .lineSpacing(10)
-                        .padding(.vertical, 25)
+                        .padding(.vertical, showQuestionImage ? 25 : 0)
                         .padding(.horizontal, 17)
                         .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 20))
-                        .foregroundStyle(Color.gray01)
+                        .foregroundStyle(showQuestionImage ? Color.gray03 : Color.gray04)
                 }
             })
             .textInputAutocapitalization(.none)
             .background(Color.clear)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 14))
+            .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 20))
             .scrollContentBackground(.hidden)
             .overlay(alignment: .bottomTrailing, content: {
-                Text("\(text.count) / \(maxTextCount)")
-                    .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 20))
-                    .foregroundStyle(Color.gray03)
-                    .padding(.trailing, 15)
-                    .padding(.bottom, 15)
-                    .onChange(of: text) { newValue, oldValue in
-                        if newValue.count > maxTextCount {
-                            text = String(newValue.prefix(maxTextCount))
+                if showQuestionImage {
+                    Text("\(text.count) / \(maxTextCount)")
+                        .font(.yoonChildfundkoreaDaeHan(type: .regular, size: 20))
+                        .foregroundStyle(Color.gray03)
+                        .padding(.trailing, 15)
+                        .padding(.bottom, 15)
+                        .onChange(of: text) { newValue, oldValue in
+                            if newValue.count > maxTextCount {
+                                text = String(newValue.prefix(maxTextCount))
+                            }
                         }
-                    }
-                    .allowsHitTesting(false)
+                        .allowsHitTesting(false)
+                }
             })
-            .overlay(
-                question.returnImage()
-                    .resizable()
-                    .allowsHitTesting(false)
-            )
+            .overlay {
+                if showQuestionImage {
+                    question.returnImage()
+                        .resizable()
+                        .allowsHitTesting(false)
+                }
+            }
         
     }
 }
 
 extension TextEditor {
-    func customStyleEditor(text: Binding<String>, placeholder: String, maxTextCount: Int, question: Questions) -> some View {
-        self.modifier(CustomTextEditor(text: text, placeholder: placeholder, maxtextCount: maxTextCount, question: question))
+    func customStyleEditor(
+        text: Binding<String>,
+        placeholder: String,
+        maxTextCount: Int,
+        question: Questions,
+        showQuestionImage: Bool = true
+    ) -> some View {
+        self.modifier(CustomTextEditor(text: text, placeholder: placeholder, maxtextCount: maxTextCount, question: question, showQuestionImage: showQuestionImage))
+    }
+    
+    func customCheerEditor(
+        text: Binding<String>,
+        placeholder: String,
+        maxTextCount: Int,
+        question: Questions,
+        showQuestionImage: Bool = false
+    ) -> some View {
+        self.modifier(CustomTextEditor(text: text, placeholder: placeholder, maxtextCount: maxTextCount, question: question, showQuestionImage: showQuestionImage))
     }
 }
 

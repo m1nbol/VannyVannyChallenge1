@@ -10,7 +10,10 @@ import SwiftUI
 struct NavigationRoutingView: View {
     
     @State var destination: NavigationDestination
+    
     @EnvironmentObject var container: DIContainer
+    @EnvironmentObject var appFlowViewModel: AppFlowViewModel
+    
     
     var body: some View {
         switch destination {
@@ -18,9 +21,9 @@ struct NavigationRoutingView: View {
             CheerView(concern: concern)
                 .environmentObject(container)
         case .createWorry:
-            Text("") //고민 생성 네비게이션
-        case .createCheer:
-            Text("") // 응원 생성 네비게이션
+            WorryView(startPoint: .homeStart)
+                .environmentObject(container)
+                .environmentObject(appFlowViewModel)
         }
     }
 }

@@ -34,9 +34,12 @@ struct GreetingView: View {
                 Text(line)
                     .font(.pretend(type: .regular, size: 16))
                     .foregroundStyle(Color.black)
+                    .lineLimit(nil)
+                    .lineSpacing(2.5)
+                    .multilineTextAlignment(.leading)
             }
         })
-        .frame(maxWidth: .infinity, minHeight: 188, alignment: .topLeading)
+        .frame(maxWidth: .infinity, minHeight: 200, alignment: .topLeading)
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 18)
